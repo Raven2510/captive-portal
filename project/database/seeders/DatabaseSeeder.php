@@ -17,6 +17,12 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
 
+        /**
+         * Try Sample Login User
+         * email: coty10@student.laverdad.edu.ph
+         * password: Lvcc#1232
+         */
+
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
