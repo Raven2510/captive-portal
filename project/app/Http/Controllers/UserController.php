@@ -19,7 +19,7 @@ class UserController extends Controller
     //Authenticate the login form
     public function auth(Request $request) {
         $credentials = $request->validate( [
-            'email' => ['required', 'email', 'regex:/([a-z0-9]+[_a-z0-9\.-]*[a-z0-9]+)@((teacher|student)+\.laverdad\.edu\.ph)/i'],
+            'email' => ['required', 'email', $_ENV['EMAIL_REGEX']],
             'password' => ['required', Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()]
         ]);
 
@@ -33,7 +33,9 @@ class UserController extends Controller
             return redirect()->intended();
         }
 
-        return back();
+        return back()->withErrors([
+            'error' => 'Invalid email or password.'
+        ]);
     }
 
     //Logout Controller

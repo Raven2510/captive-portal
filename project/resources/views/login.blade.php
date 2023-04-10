@@ -21,13 +21,20 @@
         @error('email')
         <p class="error">{{ $message }}</p>
         @enderror
-        <br>
-        <input type="password" name="password" placeholder="Enter your password..." value="{{ old('password') }}">
-        @error('password')
-        <br>
-        <p class="error">{{ $message }}</p>
-        @enderror
         <br><br>
+        <input type="password" name="password" placeholder="Enter your password..." value="{{ old('password') }}">
+        <br>
+        @error('password')
+        <p class="error">{{ $message }}</p>
+        <br>
+        @enderror
+        @error('error')
+        <p class="error">
+            {{ $message }}
+        </p>
+        <br>
+        @endif
+        <br>
         <input type="submit" value="Submit" name="submit">
     </form>
 </body>
