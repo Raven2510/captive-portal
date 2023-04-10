@@ -54,6 +54,10 @@ class UserController extends Controller
 
     //Sample Home Page
     public function home() {
-        return view('welcome');
+        $users = User::where('is_active', true)->get();
+
+        return view('welcome', [
+            'users' => $users
+        ]);
     }
 }
