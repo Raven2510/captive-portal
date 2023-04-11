@@ -13,9 +13,10 @@ class UserController extends Controller
 {
     //Login Controller
     public function login() {
-        if(auth()->check()){
+        if(Gate::allows('isLoggedIn')){
             return redirect()->intended();
         }
+
         return view('login');
     }
 
@@ -53,6 +54,10 @@ class UserController extends Controller
     }
 
     public function signup(){
+        if(Gate::allows('isLoggedIn')){
+            return redirect()->intended();
+        }
+
         return view('signup');
     }
 
@@ -95,7 +100,7 @@ class UserController extends Controller
         if(Gate::allows('isAdmin', auth()->user())){
             $users = User::where('is_active', true)->get();
 
-            return view('welcome', [
+            return view('admin', [
                 'users' => $users
             ]);
         }

@@ -30,5 +30,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('isAdmin', [UserPolicy::class, 'admin']);
 
         Gate::define('isUser', [UserPolicy::class, 'user']);
+
+        Gate::define('isLoggedIn', [UserPolicy::class, 'authenticated']);
     }
 }

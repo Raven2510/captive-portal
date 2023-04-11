@@ -14,4 +14,8 @@ class UserPolicy
     public function user(User $user) {
         return $user->role === 'user'; 
     }
+
+    public function authenticated(){
+        return auth()->check();
+    }
 }
