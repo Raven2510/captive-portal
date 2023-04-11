@@ -84,7 +84,7 @@ class UserController extends Controller
     //Sample Home Page
     public function home() {
         if(Gate::allows('isUser', auth()->user())){
-            return view('welcome-user');
+            return view('home');
         }
 
         return redirect('/admin');
