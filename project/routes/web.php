@@ -17,8 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::controller(UserController::class)->group(function() {
     Route::get('/login', 'login')->name('login');
     Route::post('/auth', 'auth');
+    Route::get('/signup', 'signup')->name('signup');
+    Route::post('/register', 'register');
 
     Route::middleware('auth')->group(function() {
+        Route::get('/admin', 'adminPanel');
         Route::get('/', 'home');
         Route::get('/logout', 'logout')->name('logout');
     });
