@@ -19,16 +19,12 @@
         tr:nth-child(even) {
             background-color: #dddddd;
         }
-        #logout {
+        a {
             background-color: darkgray;
             padding: .6rem 1rem;
             color: white;
             text-decoration: none;
             border-radius: 2px;
-        }
-        a {
-            text-decoration: none;
-            color: black;
         }
         a:hover {
             background-color: darkslategray;
@@ -37,44 +33,37 @@
 </head>
 <body>
     <h1>
-            Connected Users: {{ count($connected_users) }}
+        Notifications
     </h1>
     <table>
         <tr>
             <th>
-                Name
+                Author
             </th>
             <th>
-                Email
+                Caption
             </th>
             <th>
-                Role
+                Image
             </th>
         </tr>
-        @foreach($connected_users as $user)
-        
+        @foreach($arr as $notif)
         <tr>
             <td>
-                <a href="/users/{{$user->id}}">
-                    {{ $user->name }}
-                </a>
+                {{ $notif->admin->name }}
             </td>
             <td>
-                <a href="/users/{{$user->id}}">
-                {{ $user->email }}
-                </a>
+                {{ $notif->caption }}
             </td>
             <td>
-                <a href="/users/{{$user->id}}">
-                {{ $user->role }}
-                </a>
+                {{ $notif->image_path }}
             </td>
         </tr>
         @endforeach
     </table>
     <br><br>
-    <a id="logout" href="{{ url('logout') }}">
-        Log Out
+    <a href="/admin">
+        Back
     </a>
 </body>
 </html>

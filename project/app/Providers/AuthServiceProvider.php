@@ -32,5 +32,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('isUser', [UserPolicy::class, 'user']);
 
         Gate::define('isLoggedIn', [UserPolicy::class, 'authenticated']);
+        
+        Gate::define('isOwner', [UserPolicy::class, 'owner']);
     }
 }
